@@ -16,7 +16,7 @@ provide visualization of this data.
 ## Tech Stack
 - Flutter
 - Firebase
-- Django
+- Python [FastAPI]
 
 ## Screenshots
 ![Image Alt text](data-image/screentwo.png "Optional title")
