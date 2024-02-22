@@ -85,8 +85,10 @@ async def predict(user_id: str = Path(..., title="The ID of the user to predict 
         # Generate forecasts for the next `forecast_steps` days
         forecast = loaded_model.forecast(steps=forecast_steps)
         forecast_data = forecast.tolist()
+
+        forecast_dataval = [abs(num) for num in forecast_data]
         
-        return {"forecast": forecast_data}
+        return {"forecast": forecast_dataval}
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -94,7 +96,6 @@ async def predict(user_id: str = Path(..., title="The ID of the user to predict 
 if __name__ == "__main__":
     port = int(getenv("PORT", 8000))
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)'''
-
 
 
 
